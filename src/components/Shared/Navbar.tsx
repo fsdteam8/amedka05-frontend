@@ -105,7 +105,13 @@ export function Navbar() {
                 >
                   Become an Agent
                 </Button>
-                <Button className="bg-cyan-400 text-gray-900 hover:bg-cyan-500 w-full">
+                <Button className=" text-gray-900 hover:bg-cyan-500 w-full"
+                   style={{
+          background:
+            "linear-gradient(135deg, #7DD3DD 0%, #89CFF0 50%, #A7C8F7 100%)",
+          color: "#1B1B1B",
+        }}
+                >
                   Become a Creator
                 </Button>
               </div>
