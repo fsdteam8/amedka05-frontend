@@ -1,6 +1,10 @@
+import Loader from "@/components/Shared/Loader";
+
 export default function NotFound() {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-[#1B1B1B] text-white px-6">
+
+        
       <h1 className="text-6xl font-extrabold tracking-tight">404</h1>
       <h2 className="mt-4 text-2xl font-semibold">Page Not Found</h2>
       <p className="mt-2 text-gray-400 text-center max-w-md">
