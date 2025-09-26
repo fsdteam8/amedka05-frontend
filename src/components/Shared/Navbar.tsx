@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
-import { usePathname } from "next/navigation" // ✅
+import { usePathname } from "next/navigation"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname() // ✅ current route
+  const pathname = usePathname()
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -17,12 +17,12 @@ export function Navbar() {
     { name: "Shop", href: "/shop" },
     { name: "Agent", href: "/agent" },
     { name: "Trips", href: "/trips" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Contact Us", href: "/contactus" },
   ]
 
   return (
     <nav className="bg-[#131313] border-b  border-gray-800 py-3 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -106,11 +106,11 @@ export function Navbar() {
                   Become an Agent
                 </Button>
                 <Button className=" text-gray-900 hover:bg-cyan-500 w-full"
-                   style={{
-          background:
-            "linear-gradient(135deg, #7DD3DD 0%, #89CFF0 50%, #A7C8F7 100%)",
-          color: "#1B1B1B",
-        }}
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #7DD3DD 0%, #89CFF0 50%, #A7C8F7 100%)",
+                    color: "#1B1B1B",
+                  }}
                 >
                   Become a Creator
                 </Button>
