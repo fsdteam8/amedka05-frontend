@@ -41,7 +41,7 @@ export function TalentCard({ talent }: TalentCardProps) {
 
         <div className="space-y-3">
           {/* Clickable Name - Links to Detail Page */}
-          <Link href={`/talent/${talent.id}`} className="block group-hover:text-blue-300 transition-colors">
+          <Link href={`/creators/${talent.id}`} className="block group-hover:text-blue-300 transition-colors">
             <h3 className="text-2xl font-bold text-white mb-2 text-balance cursor-pointer">{talent.name}</h3>
           </Link>
 
