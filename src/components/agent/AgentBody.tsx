@@ -8,7 +8,7 @@ const AgentBody = () => {
                 <h1 className='text-[#E7E7E7] text-[40px] font-normal italic'>Agents</h1>
                 <p className='text-[#E7E7E7] text-[16px] font-normal'>The minds shaping tomorrow’s <span className='text-[#9F8700]'>creator economy</span></p>
             </div>
-            <div className='grid container grid-cols-3  mt-10 gap-4'>
+            <div className='grid container sm:grid-cols-2 lg:grid-cols-3  mt-10 gap-4'>
                 {[...Array(4)].map((_, i) => (
                     <AgentCard key={i} />
                 ))}

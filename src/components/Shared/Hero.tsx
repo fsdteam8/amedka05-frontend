@@ -30,9 +30,14 @@ export default function HeroSection({ title, brTitle, description, image }: type
                         </p>
                     </div>
 
-                    <div className="flex justify-center ">
+                    <div className="flex justify-center">
                         <div className="relative">
-                            <div className="absolute inset-0 opacity-55 bg-[linear-gradient(135deg,#7DD3DD_0%,#89CFF0_50%,#A7C8F7_100%)] blur-2xl rounded-full scale-90" />
+                            {/* Circular Gradient Glow */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="w-[500px] h-[500px] rounded-full bg-[linear-gradient(135deg,#7DD3DD_0%,#89CFF0_50%,#A7C8F7_100%)] blur-3xl opacity-30" />
+                            </div>
+
+                            {/* Image */}
                             <div className="relative">
                                 <Image
                                     src={image}
@@ -45,6 +50,7 @@ export default function HeroSection({ title, brTitle, description, image }: type
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>

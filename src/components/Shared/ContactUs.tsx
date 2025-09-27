@@ -105,19 +105,16 @@ export default function ContactUsForm() {
                                             defaultValue={field.value}
                                         >
                                             <FormControl>
-                                                <SelectTrigger className="border border-[#929292]">
+                                                <SelectTrigger className="border border-[#929292] text-white">
                                                     <SelectValue placeholder="Select Option" />
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
                                                 <SelectItem value="m@example.com">
-                                                    m@example.com
+                                                    Creator
                                                 </SelectItem>
                                                 <SelectItem value="m@google.com">
-                                                    m@google.com
-                                                </SelectItem>
-                                                <SelectItem value="m@support.com">
-                                                    m@support.com
+                                                    Agent
                                                 </SelectItem>
                                             </SelectContent>
                                         </Select>

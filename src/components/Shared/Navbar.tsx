@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
+import Link from "next/link"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -16,7 +17,7 @@ export function Navbar() {
     { name: "Creators", href: "/creators" },
     { name: "Shop", href: "/shop" },
     { name: "Agent", href: "/agent" },
-    { name: "Trips", href: "/trips" },
+    { name: "Trips", href: "/trip" },
     { name: "Contact Us", href: "/contactus" },
   ]
 
@@ -25,9 +26,9 @@ export function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0">
             <Image src="/logo.png" alt="Logo" width={150} height={50} />
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
@@ -56,11 +57,11 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             <Button
               variant="outline"
-              className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 bg-transparent"
+              className="border border-[#7DD3DD] bg-transparent text-[#7DD3DD] hover:bg-transparent"
             >
               Become an Agent
             </Button>
-            <Button className="bg-cyan-400 text-gray-900 hover:bg-cyan-500">Become a Creator</Button>
+            <Button className="bg-[linear-gradient(135deg,#7DD3DD_0%,#89CFF0_50%,#A7C8F7_100%)] hover:brightness-110 transition-all duration-300 text-black">Become a Creator</Button>
           </div>
 
           {/* Mobile menu button */}
