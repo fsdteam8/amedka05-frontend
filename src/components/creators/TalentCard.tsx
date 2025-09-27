@@ -31,6 +31,7 @@ export function TalentCard({ talent }: TalentCardProps) {
             <Image
               src={talent.image || "/placeholder.svg?height=128&width=128&query=professional portrait"}
               alt={talent.name}
+              priority 
               width={228}
               height={228}
               className="w-full h-full  transition-transform duration-300 group-hover:scale-105"
