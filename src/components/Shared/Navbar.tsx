@@ -36,7 +36,7 @@ export function Navbar() {
               {navItems.map((item) => {
                 const isActive = pathname === item.href // ✅ check active
                 return (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     className={cn(
@@ -47,7 +47,7 @@ export function Navbar() {
                     )}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 )
               })}
             </div>
@@ -83,7 +83,7 @@ export function Navbar() {
             {navItems.map((item) => {
               const isActive = pathname === item.href
               return (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   className={cn(
@@ -95,7 +95,7 @@ export function Navbar() {
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               )
             })}
             <div className="pt-4 pb-3 border-t border-gray-700">

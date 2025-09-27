@@ -5,7 +5,7 @@ import { Facebook, Instagram, Linkedin, Mail, MapPinCheckInside, Phone, Twitter 
 
 export function Footer() {
     return (
-        <footer className="bg-[#2A2A2A] text-[#929292] border-t border-[color:var(--footer-border)]">
+        <footer className="bg-[#2A2A2A] text-[#929292] ">
             <div className="container mx-auto px-6 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
                     {/* Brand Section */}

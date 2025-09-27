@@ -36,6 +36,7 @@ export default function RootLayout({
         <TopLoader
           color="#2563eb"
           easing="ease-in"
+          showSpinner={false}
         />
         {children}
         <Footer />
