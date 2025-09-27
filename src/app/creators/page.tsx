@@ -7,7 +7,7 @@ const Page = () => {
    <PageTransition>
 
     <div>
-          <HeroSection image={'/agentImage.png'} title={'Discover the Brilliant Faces'} brTitle={' Driving Innovation.'} description={'Meet the creators shaping trends, building influence, and inspiring collaborations worldwide.'} />
+          <HeroSection image={'/creators.png'} title={'Discover the Brilliant Faces'} brTitle={' Driving Innovation.'} description={'Meet the creators shaping trends, building influence, and inspiring collaborations worldwide.'} />
     </div>
    </PageTransition>
   )
