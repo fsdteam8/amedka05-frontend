@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Facebook, Instagram, Linkedin, Mail, MapPinCheckInside, Phone, Twitter } from "lucide-react"
@@ -151,3 +152,4 @@ export function Footer() {
         </footer>
     )
 }
+

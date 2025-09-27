@@ -1,4 +1,5 @@
 
+
 export default function NotFound() {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-[#1B1B1B] text-white px-6">
