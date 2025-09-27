@@ -1,3 +1,4 @@
+import PageTransition from '@/components/PageTransition'
 import TripCard from '@/components/trip/TripCard'
 import TripCta from '@/components/trip/TripCta'
 import TripCta1 from '@/components/trip/TripCta1'
@@ -6,6 +7,8 @@ import React from 'react'
 
 const page = () => {
     return (
+        <PageTransition>
+
         <div>
             <TripHero />
             <div className='text-center py-6'>
@@ -21,6 +24,7 @@ const page = () => {
             <TripCta />
             <TripCta1/>
         </div>
+        </PageTransition>
     )
 }
 
