@@ -102,7 +102,7 @@ export function Navbar() {
               <div className="flex flex-col space-y-3 px-3">
                 <Button
                   variant="outline"
-                  className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 w-full bg-transparent"
+                  className="border-cyan-400 text-cyan-400  hover:bg-cyan-400 hover:text-gray-900 w-full bg-transparent"
                 >
                   Become an Agent
                 </Button>
