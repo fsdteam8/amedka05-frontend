@@ -1,10 +1,12 @@
 import DownloadAgent from '@/components/agent/DownloadAgent'
+import PageTransition from '@/components/PageTransition'
 import ShopHero from '@/components/shop/ShopHero'
 import TopProductCard from '@/components/shop/TopProductCard'
 import React from 'react'
 
 const page = () => {
   return (
+    <PageTransition>
     <div>
       <ShopHero />
       <div className='container py-10'>
@@ -23,6 +25,7 @@ const page = () => {
       </div>
       <DownloadAgent />
     </div>
+    </PageTransition>
   )
 }
 

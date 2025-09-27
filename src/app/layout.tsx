@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Navbar } from "@/components/Shared/Navbar";
 import { Footer } from "@/components/Shared/Footer";
+import TopLoader from 'nextjs-toploader'
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,6 +33,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#131313]`}
       >
         <Navbar />
+        <TopLoader
+          color="#2563eb"
+          easing="ease-in"
+        />
         {children}
         <Footer />
       </body>
