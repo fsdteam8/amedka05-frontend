@@ -9,7 +9,7 @@ import ContactUsForm from "@/components/Shared/ContactUs";
 export default function Home() {
   return (
     <PageTransition>
-      <div >
+      <div>
         {/* <h1 className="text-3xl font-bold underline">Hello, Next.js!</h1> */}
         <HomeHero />
         <TripContent />

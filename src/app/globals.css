@@ -66,6 +66,7 @@
   }
 }
 
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;               /* scrollbar width */
@@ -91,7 +92,6 @@
   scrollbar-width: thin;
   scrollbar-color: #89CFF0 #1a1a1a;
 }
-
 
 @layer base {
   * {

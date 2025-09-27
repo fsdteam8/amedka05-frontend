@@ -8,7 +8,7 @@ const TripContent = () => {
                     Our Trip Contents
                 </h1>
                 <p className="text-[#E7E7E7] text-center">
-                    The mind shaping tomorrow’s{" "}
+                    The mind shaping tomorrow’s
                     <span className="text-[#9F8700]">creator economy</span>
                 </p>
             </div>
@@ -18,7 +18,7 @@ const TripContent = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="relative rounded-xl overflow-hidden">
                         <video
-                            src="https://videocdn.cdnpk.net/videos/d1dbbc37-3b8b-4a12-9735-1a4b3a7ac94c/horizontal/previews/clear/large.mp4?token=exp=1758965759~hmac=8110f889eebf6739aa74b068af67614a4617c2aa9bd2d77063e6ac855868dc6d"
+                            src="https://videocdn.cdnpk.net/videos/8cd95e0b-e448-4fc7-b633-18f26c3e4f2f/horizontal/previews/clear/large.mp4?token=exp=1758968718~hmac=af6a70c4a08853b338b8ec5444bfe177757c409581dc91255722a7ca0c956bc4"
                             autoPlay
                             loop
                             muted
@@ -42,7 +42,7 @@ const TripContent = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="relative rounded-xl overflow-hidden">
                         <video
-                            src="https://videocdn.cdnpk.net/videos/e4ff3c94-cd56-4e71-a61f-172a489ed5e1/horizontal/previews/clear/large.mp4?token=exp=1758965842~hmac=8d3997362dd7008b423c8bea59857a6f2b9f382366f783497d002e81dfb68b5d"
+                            src="https://videocdn.cdnpk.net/videos/d1dbbc37-3b8b-4a12-9735-1a4b3a7ac94c/horizontal/previews/clear/large.mp4?token=exp=1758968749~hmac=0478b3d8d62ae9f350483ac73e9b61d08a0f9d84dfa3e046e5c2e6f4c05324af"
                             autoPlay
                             loop
                             muted
