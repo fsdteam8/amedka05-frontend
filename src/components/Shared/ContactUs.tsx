@@ -3,7 +3,6 @@ import { toast } from "sonner"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-
 import { Button } from "@/components/ui/button"
 import {
     Form,
@@ -34,13 +33,13 @@ const formSchema = z.object({
 })
 
 export default function ContactUsForm() {
+   
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
     })
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         try {
-            console.log(values)
             toast(
                 <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
                     <code className="text-white">
@@ -91,7 +90,6 @@ export default function ContactUsForm() {
                                     </FormItem>
                                 )}
                             />
-
                             <FormField
                                 control={form.control}
                                 name="selectOption"
@@ -122,7 +120,6 @@ export default function ContactUsForm() {
                                     </FormItem>
                                 )}
                             />
-
                             <FormField
                                 control={form.control}
                                 name="phoneNumber"
