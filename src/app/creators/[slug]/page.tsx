@@ -57,6 +57,8 @@ export default async function TalentDetailPage({ params }: TalentDetailPageProps
 
   return (
 <main className="min-h-screen bg-black text-white py-10">
+ 
+ creators details 
   <div className="container mx-auto px-4 py-8 text-white">
     {/* Back Button */}
     <Link
@@ -160,6 +162,12 @@ export default async function TalentDetailPage({ params }: TalentDetailPageProps
 
      
       </div>
+    </div>
+
+
+    <div className="mt-16 space-y-4">
+      <h1 className="text-3xl font-bold">Lifestyle & Fashion Influencer</h1>
+      <p className="text-pretty">Gal Gadot is a lifestyle and fashion influencer known for blending elegance with everyday authenticity. With a strong presence on TikTok and Instagram, she creates engaging content that highlights fashion trends, beauty tips, and travel experiences. Olivia has collaborated with global brands like Nike, Samsung, and RedBull, helping them connect with young, style-conscious audiences. Her passion for storytelling and her ability to inspire through creative visuals make her one of the most impactful voices in today's creator economy.</p>
     </div>
   </div>
 
