@@ -2,9 +2,10 @@ import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, Instagram, Music, Mail, Phone, Star } from "lucide-react"
+import { ArrowLeft, Instagram, Music, Mail, Phone,  } from "lucide-react"
+import MediaCarousel from "@/components/creators/MediaCarousel"
+
 
 // Mock data - replace with your actual data source
 const mockTalents = [
@@ -39,6 +40,8 @@ const mockTalents = [
     },
   },
 ]
+
+
 
 interface TalentDetailPageProps {
   params: Promise<{ slug: string }>
@@ -159,6 +162,9 @@ export default async function TalentDetailPage({ params }: TalentDetailPageProps
       </div>
     </div>
   </div>
+
+<MediaCarousel/>
+
 </main>
 
   )
