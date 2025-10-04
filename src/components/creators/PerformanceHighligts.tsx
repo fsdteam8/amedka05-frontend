@@ -10,7 +10,7 @@ interface MetricProps {
 
 function MetricCard({ icon, value, label }: MetricProps) {
   return (
-    <div className="flex mx-auto w-44 justify-between items-center text-center space-y-3 sm:space-y-4">
+    <div className="flex mx-auto bg-[#1A1919]  w-[300px] rounded-lg px-5 py-4 justify-between items-center text-center space-y-3 sm:space-y-4">
       <div className="text-cyan-400 mb-2">{icon}</div>
       <div className="space-y-1 w-60">
         <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">{value}</div>
