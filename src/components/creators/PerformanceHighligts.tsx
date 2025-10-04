@@ -1,5 +1,6 @@
 import type React from "react"
 import { Users, Star, Eye } from "lucide-react"
+import { FaStar } from "react-icons/fa";
 
 interface MetricProps {
   icon: React.ReactNode
@@ -27,7 +28,7 @@ export function PerformanceHighlights() {
       label: "Followers",
     },
     {
-      icon: <Star className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
+      icon: <FaStar className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
       value: "4.8%",
       label: "Engagement Rate",
     },
