@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Instagram, Music, Mail, Phone,  } from "lucide-react"
 import MediaCarousel from "@/components/creators/MediaCarousel"
 import { PerformanceHighlights } from "@/components/creators/PerformanceHighligts"
+import { PartnershipsColaborations } from "@/components/creators/PartnershipsColaborations"
 
 
 // Mock data - replace with your actual data source
@@ -175,6 +176,7 @@ export default async function TalentDetailPage({ params }: TalentDetailPageProps
 <MediaCarousel/>
 
 <PerformanceHighlights/>
+<PartnershipsColaborations/>
 </main>
 
   )

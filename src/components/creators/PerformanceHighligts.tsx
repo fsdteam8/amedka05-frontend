@@ -1,5 +1,5 @@
 import type React from "react"
-import { Users, Star, Eye } from "lucide-react"
+import { Users,Eye } from "lucide-react"
 import { FaStar } from "react-icons/fa";
 
 interface MetricProps {
