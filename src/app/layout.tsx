@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Shared/Navbar";
 import { Footer } from "@/components/Shared/Footer";
 import TopLoader from 'nextjs-toploader'
+import AppProvider from "./provider/AppProvider";
 
 
 const geistSans = localFont({
@@ -32,6 +33,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#131313]`}
       >
+
+        <AppProvider>
         <Navbar />
         <TopLoader
           color="#2563eb"
@@ -40,6 +43,7 @@ export default function RootLayout({
         />
         {children}
         <Footer />
+        </AppProvider>
       </body>
     </html>
   );
