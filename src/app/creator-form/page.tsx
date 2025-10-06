@@ -1,13 +1,11 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
+import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowLeft, Plus, ImagePlus } from "lucide-react"
+import { ArrowLeft, Plus, ImagePlus, Trash2 } from "lucide-react"
 import Image from "next/image"
 
 interface SocialMedia {
@@ -29,35 +27,47 @@ export default function CreatorForm() {
   const [bio, setBio] = useState("")
   const [description, setDescription] = useState("")
   const [socialMedia, setSocialMedia] = useState<SocialMedia[]>([
-    { id: "1", platform: "Instagram", profileLink: "", followers: "" },
+    { id: crypto.randomUUID(), platform: "Instagram", profileLink: "", followers: "" },
   ])
-  const [interests, setInterests] = useState<Interest[]>([{ id: "1", name: "" }])
+  const [interests, setInterests] = useState<Interest[]>([{ id: crypto.randomUUID(), name: "" }])
   const [images, setImages] = useState<File[]>([])
 
-  const addSocialMedia = () => {
-    setSocialMedia([
-      ...socialMedia,
-      { id: Date.now().toString(), platform: "Instagram", profileLink: "", followers: "" },
-    ])
+  // ---- Utility Functions ----
+  const handleChange = <T extends { id: string }>(
+    list: T[],
+    setList: React.Dispatch<React.SetStateAction<T[]>>,
+    id: string,
+    key: keyof T,
+    value: string
+  ) => {
+    setList(list.map((item) => (item.id === id ? { ...item, [key]: value } : item)))
   }
 
-  const updateSocialMedia = (id: string, field: keyof SocialMedia, value: string) => {
-    setSocialMedia(socialMedia.map((sm) => (sm.id === id ? { ...sm, [field]: value } : sm)))
+  const handleAdd = <T extends { id: string }>(
+    list: T[],
+    setList: React.Dispatch<React.SetStateAction<T[]>>,
+    newItem: Omit<T, "id">
+  ) => {
+    setList([...list, { id: crypto.randomUUID(), ...newItem } as T])
   }
 
-  const addInterest = () => {
-    setInterests([...interests, { id: Date.now().toString(), name: "" }])
-  }
-
-  const updateInterest = (id: string, value: string) => {
-    setInterests(interests.map((interest) => (interest.id === id ? { ...interest, name: value } : interest)))
+  const handleRemove = <T extends { id: string }>(
+    list: T[],
+    setList: React.Dispatch<React.SetStateAction<T[]>>,
+    id: string
+  ) => {
+    setList(list.filter((item) => item.id !== id))
   }
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const newImages = Array.from(e.target.files)
-      setImages([...images, ...newImages].slice(0, 5))
+      setImages((prev) => [...prev, ...newImages].slice(0, 5)) // max 5 images
     }
+  }
+
+  const removeImage = (index: number) => {
+    setImages(images.filter((_, i) => i !== index))
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -69,16 +79,16 @@ export default function CreatorForm() {
       emailAddress,
       bio,
       description,
-      socialMedia: socialMedia.map((sm) => ({
-        platform: sm.platform,
-        profileLink: sm.profileLink,
-        followers: sm.followers,
+      socialMedia: socialMedia.map(({ platform, profileLink, followers }) => ({
+        platform,
+        profileLink,
+        followers,
       })),
-      interests: interests.map((i) => i.name).filter((name) => name.trim() !== ""),
+      interests: interests.map((i) => i.name).filter(Boolean),
       images: images.map((img) => img.name),
     }
 
-    console.log("[v0] Form Data:", formData)
+    console.log("✅ Form Data:", formData)
   }
 
   return (
@@ -102,8 +112,10 @@ export default function CreatorForm() {
           <div className="space-y-6">
             {/* Full Name */}
             <div>
-              <label className="block text-sm mb-2">Full Name</label>
+              <label htmlFor="fullName" className="block text-sm mb-2">Full Name</label>
               <Input
+                id="fullName"
+                required
                 placeholder="Name Here"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
@@ -113,8 +125,10 @@ export default function CreatorForm() {
 
             {/* Phone Number */}
             <div>
-              <label className="block text-sm mb-2">Phone Number</label>
+              <label htmlFor="phone" className="block text-sm mb-2">Phone Number</label>
               <Input
+                id="phone"
+                type="tel"
                 placeholder="+1234567890"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
@@ -124,9 +138,11 @@ export default function CreatorForm() {
 
             {/* Email Address */}
             <div>
-              <label className="block text-sm mb-2">Email Address</label>
+              <label htmlFor="email" className="block text-sm mb-2">Email Address</label>
               <Input
+                id="email"
                 type="email"
+                required
                 placeholder="hello@example.com"
                 value={emailAddress}
                 onChange={(e) => setEmailAddress(e.target.value)}
@@ -139,8 +155,11 @@ export default function CreatorForm() {
               <label className="block text-sm mb-2">Social Media</label>
               <div className="space-y-3">
                 {socialMedia.map((sm) => (
-                  <div key={sm.id} className="flex gap-2">
-                    <Select value={sm.platform} onValueChange={(value) => updateSocialMedia(sm.id, "platform", value)}>
+                  <div key={sm.id} className="flex gap-2 items-center">
+                    <Select
+                      value={sm.platform}
+                      onValueChange={(value) => handleChange(socialMedia, setSocialMedia, sm.id, "platform", value)}
+                    >
                       <SelectTrigger className="w-[140px] bg-transparent border-gray-700 text-white">
                         <SelectValue />
                       </SelectTrigger>
@@ -152,22 +171,32 @@ export default function CreatorForm() {
                       </SelectContent>
                     </Select>
                     <Input
-                      placeholder="Enter your profile link..."
+                      placeholder="Profile link..."
                       value={sm.profileLink}
-                      onChange={(e) => updateSocialMedia(sm.id, "profileLink", e.target.value)}
-                      className="flex-1 bg-transparent border-gray-700 text-white placeholder:text-gray-500"
+                      onChange={(e) => handleChange(socialMedia, setSocialMedia, sm.id, "profileLink", e.target.value)}
+                      className="flex-1 bg-transparent border-gray-700 text-white"
                     />
                     <Input
-                      placeholder="000K Followers"
+                      placeholder="Followers"
                       value={sm.followers}
-                      onChange={(e) => updateSocialMedia(sm.id, "followers", e.target.value)}
-                      className="w-[140px] bg-transparent border-gray-700 text-white placeholder:text-gray-500"
+                      onChange={(e) => handleChange(socialMedia, setSocialMedia, sm.id, "followers", e.target.value)}
+                      className="w-[140px] bg-transparent border-gray-700 text-white"
                     />
+                    <Button
+                      type="button"
+                      size="icon"
+                      variant="ghost"
+                      onClick={() => handleRemove(socialMedia, setSocialMedia, sm.id)}
+                    >
+                      <Trash2 className="h-4 w-4 text-red-500" />
+                    </Button>
                   </div>
                 ))}
                 <Button
                   type="button"
-                  onClick={addSocialMedia}
+                  onClick={() =>
+                    handleAdd(socialMedia, setSocialMedia, { platform: "Instagram", profileLink: "", followers: "" })
+                  }
                   className="w-10 h-10 rounded-full bg-cyan-400 hover:bg-cyan-500 text-black"
                   size="icon"
                 >
@@ -181,17 +210,26 @@ export default function CreatorForm() {
               <label className="block text-sm mb-2">Interests</label>
               <div className="space-y-3">
                 {interests.map((interest) => (
-                  <Input
-                    key={interest.id}
-                    placeholder="Enter interests name..."
-                    value={interest.name}
-                    onChange={(e) => updateInterest(interest.id, e.target.value)}
-                    className="bg-transparent border-gray-700 text-white placeholder:text-gray-500"
-                  />
+                  <div key={interest.id} className="flex gap-2 items-center">
+                    <Input
+                      placeholder="Interest name..."
+                      value={interest.name}
+                      onChange={(e) => handleChange(interests, setInterests, interest.id, "name", e.target.value)}
+                      className="bg-transparent border-gray-700 text-white"
+                    />
+                    <Button
+                      type="button"
+                      size="icon"
+                      variant="ghost"
+                      onClick={() => handleRemove(interests, setInterests, interest.id)}
+                    >
+                      <Trash2 className="h-4 w-4 text-red-500" />
+                    </Button>
+                  </div>
                 ))}
                 <Button
                   type="button"
-                  onClick={addInterest}
+                  onClick={() => handleAdd(interests, setInterests, { name: "" })}
                   className="w-10 h-10 rounded-full bg-cyan-400 hover:bg-cyan-500 text-black"
                   size="icon"
                 >
@@ -205,47 +243,58 @@ export default function CreatorForm() {
           <div className="space-y-6">
             {/* Bio */}
             <div>
-              <label className="block text-sm mb-2">Bio</label>
+              <label htmlFor="bio" className="block text-sm mb-2">Bio</label>
               <Textarea
-                placeholder="Write your message here..."
+                id="bio"
+                placeholder="Short bio..."
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
-                className="min-h-[120px] bg-transparent border-gray-700 text-white placeholder:text-gray-500 resize-none"
+                className="min-h-[120px] bg-transparent border-gray-700 text-white resize-none"
               />
             </div>
 
             {/* Description */}
             <div>
-              <label className="block text-sm mb-2">Description</label>
+              <label htmlFor="description" className="block text-sm mb-2">Description</label>
               <Textarea
-                placeholder="Write your message here..."
+                id="description"
+                placeholder="Detailed description..."
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="min-h-[140px] bg-transparent border-gray-700 text-white placeholder:text-gray-500 resize-none"
+                className="min-h-[140px] bg-transparent border-gray-700 text-white resize-none"
               />
             </div>
 
             {/* Image Upload */}
             <div>
-              <label className="block text-sm mb-2">Image</label>
+              <label className="block text-sm mb-2">Images (max 5)</label>
               <div className="border-2 border-dashed border-gray-700 rounded-lg p-8">
-                <div className="flex items-center justify-center gap-4 mb-4">
-                  <ImagePlus className="h-12 w-12 text-gray-600" />
-                </div>
-                <div className="flex gap-2 justify-center mb-4">
-                  {[...Array(4)].map((_, i) => (
-                    <div key={i} className="w-10 h-10 border border-gray-700 rounded flex items-center justify-center">
-                      {images[i] ? (
-                        <Image
-                          src={URL.createObjectURL(images[i]) || "/placeholder.svg"}
-                          alt={`Upload ${i + 1}`}
-                          className="w-full h-full object-cover rounded"
-                        />
-                      ) : (
-                        <ImagePlus className="h-5 w-5 text-gray-600" />
-                      )}
+                <div className="flex flex-wrap gap-4 justify-center">
+                  {images.map((img, i) => (
+                    <div key={i} className="relative w-16 h-16 border border-gray-700 rounded overflow-hidden">
+                      <Image
+                        src={URL.createObjectURL(img)}
+                        alt={`Upload ${i + 1}`}
+                        fill
+                        className="object-cover rounded"
+                      />
+                      <button
+                        type="button"
+                        className="absolute top-0 right-0 bg-black/70 text-white p-1"
+                        onClick={() => removeImage(i)}
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
                     </div>
                   ))}
+                  {images.length < 5 && (
+                    <label
+                      htmlFor="image-upload"
+                      className="w-16 h-16 border border-gray-700 rounded flex items-center justify-center cursor-pointer"
+                    >
+                      <ImagePlus className="h-6 w-6 text-gray-500" />
+                    </label>
+                  )}
                 </div>
                 <input
                   type="file"
@@ -255,19 +304,16 @@ export default function CreatorForm() {
                   className="hidden"
                   id="image-upload"
                 />
-                <label
-                  htmlFor="image-upload"
-                  className="block text-center text-sm text-gray-500 cursor-pointer hover:text-gray-400"
-                >
-                  Click to upload images
-                </label>
               </div>
             </div>
           </div>
 
           {/* Submit Button */}
           <div className="lg:col-span-2 flex justify-end">
-            <Button type="submit" className="bg-cyan-400 hover:bg-cyan-500 text-black font-medium px-12 py-6 text-base">
+            <Button
+              type="submit"
+              className="bg-cyan-400 hover:bg-cyan-500 text-black font-medium px-12 py-6 text-base"
+            >
               Send Request
             </Button>
           </div>
