@@ -21,15 +21,30 @@ const TripCard = ({ trip }: { trip: Trip }) => {
             </div>
 
             <div className="flex flex-col items-center my-4 gap-2">
-                <h1 className="text-white font-bold text-2xl">China, Beijing</h1>
+                <h1 className="text-white font-bold text-2xl">{trip?.country}</h1>
                 <p className="text-[#929292] flex gap-3 items-center">
-                    <Users size={20} /> Participants
+                    <Users size={20} /> {trip?.participants} Participants
                 </p>
                 <p className="text-[#929292] flex gap-3 items-center">
-                    <Calendar /> 15 Nov 2025 - 22 Nov 2025
+                    <Calendar />
+                    {trip?.startDate
+                        ? new Date(trip.startDate).toLocaleDateString("en-GB", {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                        })
+                        : "N/A"}
+                    {" "}-{" "}
+                    {trip?.endDate
+                        ? new Date(trip.endDate).toLocaleDateString("en-GB", {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                        })
+                        : "N/A"}
                 </p>
                 <p className="text-[#929292] text-center">
-                    Guomao (China World Trade Center area)
+                    {trip?.location}
                 </p>
             </div>
         </div>
