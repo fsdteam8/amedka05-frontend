@@ -33,16 +33,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#131313]`}
       >
-
         <AppProvider>
-        <Navbar />
-        <TopLoader
-          color="#2563eb"
-          easing="ease-in"
-          showSpinner={false}
-        />
-        {children}
-        <Footer />
+          <Navbar />
+          <TopLoader
+            color="#2563eb"
+            easing="ease-in"
+            showSpinner={false}
+          />
+          {children}
+          <Footer />
         </AppProvider>
       </body>
     </html>
