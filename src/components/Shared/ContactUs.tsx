@@ -1,5 +1,4 @@
 "use client"
-import { toast } from "sonner"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
@@ -23,6 +22,8 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "../ui/card"
 import Image from "next/image"
+import { useContactMutation } from "@/hooks/ApiCalling"
+import { Loader2 } from "lucide-react"
 
 const formSchema = z.object({
     fullName: z.string().min(1),
@@ -33,24 +34,20 @@ const formSchema = z.object({
 })
 
 export default function ContactUsForm() {
-   
+    const contactMutation = useContactMutation()
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
     })
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        try {
-            toast(
-                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                    <code className="text-white">
-                        {JSON.stringify(values, null, 2)}
-                    </code>
-                </pre>
-            )
-        } catch (error) {
-            console.error("Form submission error", error)
-            toast.error("Failed to submit the form. Please try again.")
-        }
+        contactMutation.mutate({
+            fullName: values.fullName,
+            selectOption: values.selectOption,
+            phoneNumber: values.phoneNumber,
+            email: values.email,
+            message: values.message,
+        })
     }
 
     return (
@@ -82,7 +79,7 @@ export default function ContactUsForm() {
                                         <FormControl>
                                             <Input
                                                 placeholder="Full Name"
-                                                className="border p-3 border-[#929292]"
+                                                className="border text-white p-3 border-[#929292]"
                                                 {...field}
                                             />
                                         </FormControl>
@@ -108,10 +105,10 @@ export default function ContactUsForm() {
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
-                                                <SelectItem value="m@example.com">
+                                                <SelectItem value="creator">
                                                     Creator
                                                 </SelectItem>
-                                                <SelectItem value="m@google.com">
+                                                <SelectItem value="agent">
                                                     Agent
                                                 </SelectItem>
                                             </SelectContent>
@@ -131,7 +128,7 @@ export default function ContactUsForm() {
                                         <FormControl>
                                             <Input
                                                 placeholder="Phone Number"
-                                                className="border p-3 border-[#929292]"
+                                                className="border text-white p-3 border-[#929292]"
                                                 {...field}
                                             />
                                         </FormControl>
@@ -152,7 +149,7 @@ export default function ContactUsForm() {
                                             <Input
                                                 placeholder="Email Address"
                                                 type="email"
-                                                className="border p-3 border-[#929292]"
+                                                className="border text-white p-3 border-[#929292]"
                                                 {...field}
                                             />
                                         </FormControl>
@@ -171,7 +168,7 @@ export default function ContactUsForm() {
                                             <Textarea
                                                 rows={5}
                                                 placeholder="Message"
-                                                className="resize-none border p-3 border-[#929292]"
+                                                className="resize-none border text-white p-3 border-[#929292]"
                                                 {...field}
                                             />
                                         </FormControl>
@@ -184,7 +181,7 @@ export default function ContactUsForm() {
                                 type="submit"
                                 className="w-full text-[#1A1919] py-3 font-semibold bg-[linear-gradient(135deg,#7DD3DD_0%,#89CFF0_50%,#A7C8F7_100%)] hover:brightness-110 transition-all duration-300"
                             >
-                                Send Message
+                                Send Message {contactMutation.isPending && <Loader2 className="animate-spin" />}
                             </Button>
                         </form>
                     </Form>

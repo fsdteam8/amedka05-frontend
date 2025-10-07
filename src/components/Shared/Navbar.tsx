@@ -11,7 +11,6 @@ import Link from "next/link"
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
-
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Creators", href: "/creators" },
