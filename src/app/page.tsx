@@ -1,8 +1,8 @@
-import AgentCard from "@/components/agent/AgentCard";
 import DownloadAgent from "@/components/agent/DownloadAgent";
 import HomeHero from "@/components/home/HomeHero";
 import TripContent from "@/components/home/TripContent";
 import PageTransition from "@/components/PageTransition";
+import AgentBodyHome from "@/components/Shared/AgentBodyHome";
 import ContactUsForm from "@/components/Shared/ContactUs";
 
 
@@ -18,11 +18,7 @@ export default function Home() {
             <h1 className='text-[#E7E7E7] text-[40px] font-normal italic'>Agents</h1>
             <p className='text-[#E7E7E7] text-[16px] font-normal'>The minds shaping tomorrow’s <span className='text-[#9F8700]'>creator economy</span></p>
           </div>
-          <div className='grid container sm:grid-cols-2 lg:grid-cols-3  mt-10 gap-4'>
-            {[...Array(4)].map((_, i) => (
-              <AgentCard key={i} />
-            ))}
-          </div>
+          <AgentBodyHome/>
         </div>
         <ContactUsForm />
         <DownloadAgent />

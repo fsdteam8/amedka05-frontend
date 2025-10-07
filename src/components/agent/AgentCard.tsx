@@ -3,7 +3,7 @@ import React from 'react'
 import { Agent } from "@/types/agentDataType";
 
 const AgentCard = ({agent}: {agent: Agent}) => {
-    console.log(agent)
+  
     return (
         <div className='bg-[#2A2A2A] p-6   rounded-lg'>
             <div className=''>
