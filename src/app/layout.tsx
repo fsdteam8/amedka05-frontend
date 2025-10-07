@@ -6,7 +6,6 @@ import { Footer } from "@/components/Shared/Footer";
 import TopLoader from 'nextjs-toploader'
 import AppProvider from "./provider/AppProvider";
 
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
