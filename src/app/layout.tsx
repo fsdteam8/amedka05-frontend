@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Manrope, Racing_Sans_One } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Shared/Navbar";
 import { Footer } from "@/components/Shared/Footer";
 import TopLoader from 'nextjs-toploader'
 import AppProvider from "./provider/AppProvider";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const racingSansOne = Racing_Sans_One({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  weight: "400", 
 });
+
 
 export const metadata: Metadata = {
   title: "Next Level",
@@ -30,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#131313]`}
+        className={`${manrope.variable} ${racingSansOne.variable} antialiased bg-[#131313]`}
       >
         <AppProvider>
           <Navbar />
