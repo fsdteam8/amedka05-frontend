@@ -6,7 +6,8 @@ import { Agent } from "@/types/agentDataType";
 
 const AgentBody = () => {
   const agentGet = useAgentGet();
-  const data = agentGet.data?.data || [];
+  const data = Array.isArray(agentGet.data?.data) ? agentGet.data?.data : [];
+
   return (
     <div className="bg-[#1B1B1B] py-[72px]">
       <div className="container mb-10">
@@ -20,7 +21,7 @@ const AgentBody = () => {
       </div>
 
       <div className="grid container sm:grid-cols-2 lg:grid-cols-3 mt-10 gap-4">
-        {data?.map((agent: Agent) => (
+        {data &&  data?.map((agent: Agent) => (
           <AgentCard key={agent._id} agent={agent} />
         ))}                                                  
       </div>

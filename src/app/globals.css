@@ -101,3 +101,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+body {
+  @apply bg-background text-foreground;
+  font-family: var(--font-manrope), sans-serif; /* Body font */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), sans-serif; /* Heading font */
+}

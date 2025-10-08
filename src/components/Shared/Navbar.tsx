@@ -54,13 +54,17 @@ export function Navbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="outline"
-              className="border border-[#7DD3DD] bg-transparent text-[#7DD3DD] hover:bg-transparent"
-            >
-              Become an Agent
-            </Button>
-            <Button className="bg-[linear-gradient(135deg,#7DD3DD_0%,#89CFF0_50%,#A7C8F7_100%)] hover:brightness-110 transition-all duration-300 text-black">Become a Creator</Button>
+            <Link href="/agent-form">
+              <Button
+                variant="outline"
+                className="border border-[#7DD3DD] bg-transparent text-[#7DD3DD] hover:bg-transparent"
+              >
+                Become an Agent
+              </Button>
+            </Link>
+            <Link href="/creator-form">
+              <Button className="bg-[linear-gradient(135deg,#7DD3DD_0%,#89CFF0_50%,#A7C8F7_100%)] hover:brightness-110 transition-all duration-300 text-black">Become a Creator</Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -99,21 +103,25 @@ export function Navbar() {
             })}
             <div className="pt-4 pb-3 border-t border-gray-700">
               <div className="flex flex-col space-y-3 px-3">
-                <Button
-                  variant="outline"
-                  className="border-cyan-400 text-cyan-400  hover:bg-cyan-400 hover:text-gray-900 w-full bg-transparent"
-                >
-                  Become an Agent
-                </Button>
-                <Button className=" text-gray-900 hover:bg-cyan-500 w-full"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #7DD3DD 0%, #89CFF0 50%, #A7C8F7 100%)",
-                    color: "#1B1B1B",
-                  }}
-                >
-                  Become a Creator
-                </Button>
+                <Link href="/agent-form">
+                  <Button
+                    variant="outline"
+                    className="border-cyan-400 text-cyan-400  hover:bg-cyan-400 hover:text-gray-900 w-full bg-transparent"
+                  >
+                    Become an Agent
+                  </Button>
+                </Link>
+                <Link href="/creator-form">
+                  <Button className=" text-gray-900 hover:bg-cyan-500 w-full"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #7DD3DD 0%, #89CFF0 50%, #A7C8F7 100%)",
+                      color: "#1B1B1B",
+                    }}
+                  >
+                    Become a Creator
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
