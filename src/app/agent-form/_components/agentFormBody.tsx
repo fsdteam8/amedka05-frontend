@@ -223,8 +223,6 @@ export default function AgentForm() {
                             )}
                         />
                     </div>
-
-                    {/* ✅ Single Image Upload UI */}
                     <div className="col-span-6">
                         <FormField
                             control={form.control}
