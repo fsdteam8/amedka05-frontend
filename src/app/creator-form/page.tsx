@@ -1,6 +1,4 @@
 import React from "react"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
 import CreatorBody from "./_components/creatorBody"
 import BackButton from "@/components/BackButton"
 
