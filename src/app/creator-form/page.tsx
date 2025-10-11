@@ -2,6 +2,7 @@ import React from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import CreatorBody from "./_components/creatorBody"
+import BackButton from "@/components/BackButton"
 
 
 export default function CreatorForm() {
@@ -20,13 +21,14 @@ export default function CreatorForm() {
     >
 
       <div className="max-w-7xl mx-auto">
-        <Button
+        {/* <Button
           variant="ghost"
           size="icon"
           className="mb-8 text-white hover:bg-white/10"
         >
           <ArrowLeft className="h-5 w-5" />
-        </Button>
+        </Button> */}
+        <BackButton/>
 
         <h1 className="text-[#7DD3DD] font-normal text-center text-[40px] mb-10 ">
           Turn Creativity Into Opportunity
