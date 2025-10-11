@@ -1,14 +1,13 @@
 import DownloadAgent from "@/components/agent/DownloadAgent";
 import HomeHero from "@/components/home/HomeHero";
 import TripContent from "@/components/home/TripContent";
-import PageTransition from "@/components/PageTransition";
 import AgentBodyHome from "@/components/Shared/AgentBodyHome";
 import ContactUsForm from "@/components/Shared/ContactUs";
 
 
 export default function Home() {
+  
   return (
-    <PageTransition>
       <div>
         {/* <h1 className="text-3xl font-bold underline">Hello, Next.js!</h1> */}
         <HomeHero />
@@ -23,6 +22,5 @@ export default function Home() {
         <ContactUsForm />
         <DownloadAgent />
       </div>
-    </PageTransition>
   );
 }

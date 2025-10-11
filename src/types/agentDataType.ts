@@ -27,3 +27,14 @@ export interface AgentApiResponse {
   meta: AgentMeta;
   data: Agent[];
 }
+
+export interface AgentData {
+  fullName: string;
+  designation: string;
+  phoneNumber: string;
+  brandName: string;
+  emailAddress: string;
+  workingFrom: string;
+  country: string;
+  image: File | string | null;
+}
