@@ -2,6 +2,7 @@ import React from 'react'
 import AgentForm from './_components/agentFormBody'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
 
 const page = () => {
   return (
@@ -17,6 +18,7 @@ const page = () => {
     >
 
       <div className="max-w-7xl mx-auto">
+       <Link href="/">
         <Button
           variant="ghost"
           size="icon"
@@ -24,6 +26,7 @@ const page = () => {
         >
           <ArrowLeft className="h-5 w-5" />
         </Button>
+       </Link>
 
         <h1 className="text-[#7DD3DD] font-normal text-center text-[40px] mb-10 ">
           Collaborate For Growth

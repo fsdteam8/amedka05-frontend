@@ -2,6 +2,7 @@ import React from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import CreatorBody from "./_components/creatorBody"
+import Link from "next/link"
 
 
 export default function CreatorForm() {
@@ -20,6 +21,7 @@ export default function CreatorForm() {
     >
 
       <div className="max-w-7xl mx-auto">
+         <Link href="/"> 
         <Button
           variant="ghost"
           size="icon"
@@ -27,7 +29,8 @@ export default function CreatorForm() {
         >
           <ArrowLeft className="h-5 w-5" />
         </Button>
-
+         </Link>
+ 
         <h1 className="text-[#7DD3DD] font-normal text-center text-[40px] mb-10 ">
           Turn Creativity Into Opportunity
         </h1>

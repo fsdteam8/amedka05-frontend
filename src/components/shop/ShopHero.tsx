@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Button } from "../ui/button"
 import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export default function ShopHero() {
     return (
@@ -46,12 +47,16 @@ export default function ShopHero() {
 
                             {/* Buttons right after image */}
                             <div className="flex flex-col sm:flex-row gap-4 ">
+                               <Link href="/creator-form" className="w-full sm:w-auto">
                                 <Button className="bg-[#7DD3DD] hover:bg-[#86d1da] text-[#131313] w-full sm:w-auto">
                                     Creator Application <ArrowRight className="ml-2" />
                                 </Button>
+                               </Link>
+                               <Link href="/creators" className="w-full sm:w-auto">
                                 <Button className="bg-white hover:bg-white px-10 sm:px-20 text-[#2A2A2A] w-full sm:w-auto">
                                     Our Creator
                                 </Button>
+                               </Link>
                             </div>
                         </div>
                     </div>

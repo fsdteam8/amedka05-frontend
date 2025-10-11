@@ -33,7 +33,7 @@ export function Navbar() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => {
-                const isActive = pathname === item.href // ✅ check active
+                const isActive = pathname === item.href
                 return (
                   <Link
                     key={item.name}
@@ -57,7 +57,7 @@ export function Navbar() {
             <Link href="/agent-form">
               <Button
                 variant="outline"
-                className="border border-[#7DD3DD] bg-transparent text-[#7DD3DD] hover:bg-transparent"
+                className="border border-[#7DD3DD] hover:text-white bg-transparent text-[#7DD3DD] hover:bg-transparent"
               >
                 Become an Agent
               </Button>
