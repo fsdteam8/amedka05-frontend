@@ -1,6 +1,7 @@
 import { getAgent } from "@/lib/agent";
 import { createAgent } from "@/lib/agentForm";
 import { createContact } from "@/lib/contact";
+import { createNewsletter } from "@/lib/newsletter";
 import { getShop } from "@/lib/shop";
 import { getAllTrip, getAllTripContent } from "@/lib/trip";
 import { AgentApiResponse, AgentData } from "@/types/agentDataType";
@@ -75,6 +76,22 @@ export function useCreateAgent() {
         onSuccess: () => {
             toast.success("Pertnership created successfully");
             queryClient.invalidateQueries({ queryKey: ["agent"] });
+        },
+        onError: (error: unknown) => {
+            if (error instanceof Error) toast.error(error.message || "Update failed");
+            else toast.error("Update failed");
+        },
+    });
+}
+
+export function useNewsletter() {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        mutationFn: (payload: { email: string }) => createNewsletter(payload),
+        onSuccess: () => {
+            toast.success("newsletter created successfully");
+            queryClient.invalidateQueries({ queryKey: ["newsletter"] });
         },
         onError: (error: unknown) => {
             if (error instanceof Error) toast.error(error.message || "Update failed");
