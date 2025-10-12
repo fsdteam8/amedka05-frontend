@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Button } from "../ui/button"
 import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export default function TripHero() {
     return (
@@ -40,10 +41,15 @@ export default function TripHero() {
                     </div>
 
                     <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col sm:flex-row gap-4 px-4 sm:px-0">
-                        <Button className="bg-[#7DD3DD] hover:bg-[#89CFF0] text-[#131313] w-full sm:w-auto">
-                            Creator Application <ArrowRight className="ml-2" />
-                        </Button>
-                        <Button className="bg-[#FFFFFF] hover:bg-[#89CFF0] text-[#2A2A2A] w-full sm:w-auto">Our Creator</Button>
+                        <Link href="/creator-form" className="w-full sm:w-auto">
+                            <Button className="bg-[#7DD3DD] hover:bg-[#89CFF0] text-[#131313] w-full sm:w-auto">
+                                Creator Application <ArrowRight className="ml-2" />
+                            </Button>
+                        </Link>
+                        <Link href="/creators" className="w-full sm:w-auto">
+                            <Button className="bg-[#FFFFFF] hover:bg-[#89CFF0] text-[#2A2A2A] w-full sm:w-auto">Our Creator</Button>
+                        </Link>
+
                     </div>
                 </div>
             </div>
